@@ -89,18 +89,6 @@ As shown, the model was unable to generate clear or recognizable faces. Instead,
 4. **GPU Limitations**: 
    The training process required substantial computational power, and although the model was run on a GPU, the hardware limitations may have hindered the model’s ability to converge to more realistic outputs. Further tuning or a more powerful GPU might be necessary for better results.
 
-### Conclusion
-
-While the project successfully integrated the diffusion model with U-Net, the generated images do not resemble faces and appear as random pixelated noise. The challenges encountered include difficulties in tuning the model and training it to generate realistic images. The results highlight that further experimentation, such as adjusting the diffusion steps or exploring different network architectures, is needed to improve image quality and obtain meaningful results.
-
-### Future Work
-
-Several areas can be explored to improve the results:
-- **Hyperparameter Tuning**: Further experimentation with the number of diffusion steps, noise schedules, and learning rates could improve model stability and image quality.
-- **Architecture Adjustments**: Trying different U-Net variants or other neural network architectures (e.g., GANs) might be beneficial in generating clearer, more realistic images.
-- **Extended Training**: Training the model for more epochs or using a larger batch size may help in learning better representations of face images.
-- **Alternative Models**: Explore using other generative models like GANs (Generative Adversarial Networks), which are often more effective in generating high-quality images.
-
 ## References
 
 - **U-Net Paper**: [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/abs/1505.04597)
