@@ -12,9 +12,11 @@ Diffusion models are generative frameworks based on the idea of iteratively addi
 
 #### Forward Diffusion Process
 The forward process progressively corrupts an input image \( x_0 \) by adding Gaussian noise at each time step \( t \). At time step \( t \), the image \( x_t \) is the noisy version of the original image. The forward process is defined as:
-\[
+
+$$
 x_t = \sqrt{\alpha_t} x_0 + \sqrt{1 - \alpha_t} \epsilon_t,
-\]
+$$
+
 where:
 - \( x_t \) is the noisy image at time step \( t \),
 - \( \alpha_t \) controls the scale of the noise at time step \( t \),
@@ -22,9 +24,11 @@ where:
 
 #### Reverse Diffusion Process
 The reverse diffusion process is responsible for denoising the image. It uses the learned score function \( \nabla_x \log p_t(x) \), which approximates the gradient of the log probability of the image at time step \( t \). The reverse process is modeled by the reverse-time SDE:
-\[
+
+$$
 dx = \left[f(x, t) - g(t)^2 \nabla_x \log p_t(x)\right] dt + g(t) d\bar{W},
-\]
+$$
+
 where:
 - \( \nabla_x \log p_t(x) \) is the score function, representing the direction in which the image should move to reduce noise,
 - \( d\bar{W} \) is the reverse Wiener process.
@@ -37,9 +41,11 @@ The U-Net architecture is widely used for tasks involving image-to-image transla
 2. **Expansive Path**: This part reconstructs the image using upsampling and skip connections, which combine information from the contracting path.
 
 Mathematically, the output feature map at layer \( l \) in the expansive path is computed as:
-\[
+
+$$
 h_l = \text{ReLU}(\text{Conv}(h_{l-1}) + \text{Skip}(h_{L-l})),
-\]
+$$
+
 where:
 - \( \text{Conv} \) represents convolutional layers,
 - \( \text{Skip}(h_{L-l}) \) is the feature map from the corresponding contracting layer, which provides context and fine-grained details during reconstruction.
@@ -58,9 +64,11 @@ The **CelebA dataset** consists of over 200,000 aligned facial images with 40 at
 
 ### Time Embedding (No Gaussian Fourier Projection)
 To encode the time step \( t \) into a high-dimensional representation, we directly use sinusoidal embeddings (common in diffusion models). The time \( t \) is represented as:
-\[
+
+$$
 \phi(t) = [\sin(W \cdot t), \cos(W \cdot t)],
-\]
+$$
+
 where \( W \) is a matrix of fixed weights.
 
 These time embeddings allow the model to capture temporal dependencies in the diffusion process.
@@ -69,18 +77,22 @@ These time embeddings allow the model to capture temporal dependencies in the di
 The score function \( s_\theta(x_t, t) \) is parameterized as a neural network based on the U-Net architecture. The network takes the noisy image \( x_t \) and the time embedding \( \phi(t) \) as input and predicts the noise added to the image. The network output is the predicted score \( s_\theta(x_t, t) \), which guides the reverse diffusion process.
 
 The forward pass through the score network is given by:
-\[
+
+$$
 s_\theta(x_t, t) = \text{U-Net}(x_t, \phi(t)),
-\]
+$$
+
 where:
 - \( x_t \) is the noisy input image,
 - \( \phi(t) \) represents the time-dependent embedding.
 
 ### Reverse-Time SDE Solver
 The reverse-time SDE solver is used to generate new samples from the noise by iteratively applying the reverse diffusion process. Using the **Euler-Maruyama method**, the update step for the image at time step \( t - \Delta t \) is:
-\[
+
+$$
 x_{t-\Delta t} = x_t + \left[f(x_t, t) - g(t)^2 s_\theta(x_t, t)\right] \Delta t + g(t) \sqrt{\Delta t} z,
-\]
+$$
+
 where:
 - \( z \sim \mathcal{N}(0, I) \) is random noise drawn from a standard normal distribution,
 - \( g(t) \) is the diffusion coefficient,
@@ -92,9 +104,11 @@ where:
 
 ### Loss Function
 The training objective minimizes the difference between the predicted noise and the true noise added during the forward diffusion process:
-\[
+
+$$
 \mathcal{L} = \mathbb{E}_{x, t, z} \left[\left\| s_\theta(x_t, t) + \frac{z}{\sigma_t} \right\|_2^2\right],
-\]
+$$
+
 where:
 - \( x_t = x_0 + z \cdot \sigma_t \) is the perturbed image,
 - \( z \sim \mathcal{N}(0, I) \) is Gaussian noise,
