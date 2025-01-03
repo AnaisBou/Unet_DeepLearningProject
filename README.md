@@ -77,20 +77,17 @@ As shown, the model was unable to generate clear or recognizable faces. Instead,
 
 ### Challenges Encountered
 
-1. **Difficulty in Implementing the Diffusion Model**:
-   Implementing a working diffusion model integrated with U-Net was far more challenging than expected. Despite following theoretical resources and tutorials, the results did not meet expectations. The model was unable to generate coherent images, and the output appeared pixelated rather than realistic. Fine-tuning diffusion steps and adjusting the architecture didn’t yield the desired results.
+1. **Difficulty in Implementing the Diffusion Model**: 
+   Implementing the diffusion model integrated with U-Net was more challenging than expected. Despite following theoretical resources and tutorials, the model struggled to generate meaningful images. The results were pixelated and lacked any clear structure or resemblance to faces.
 
-2. **Inadequate Image Quality**:
-   The generated images are highly pixelated, and there is no clear pattern resembling faces or any recognizable features. This indicates that the diffusion process, combined with U-Net, wasn't successful in learning how to generate realistic images from noise.
+2. **Inadequate Image Quality**: 
+   The generated images were highly pixelated, with no recognizable patterns resembling faces. This indicates that the model was unable to reverse the added noise effectively, pointing to the need for further tuning.
 
-3. **Training Instability**:
-   The training process exhibited instability, especially in the initial epochs. Despite efforts to adjust hyperparameters (such as learning rate and number of diffusion steps), the model failed to converge to generate sharper or more meaningful images.
+3. **Training Instability**: 
+   The training process was unstable, especially in the early epochs. Adjusting hyperparameters and diffusion steps helped to some extent, but the model still failed to generate sharper, more coherent images.
 
-4. **Lack of Clear Faces in Generated Output**:
-   The primary goal of this project was to generate faces from the CelebA dataset, but the results show that the model struggles with producing structured, human-like faces. The output is more of random noise, with no discernible patterns or features resembling actual faces.
-
-5. **Model and Dataset Limitations**:
-   The CelebA dataset is highly complex and includes diverse images, making it challenging for the model to learn the underlying patterns effectively. The inability of the model to generate faces may also be due to insufficient training, inadequate architecture, or a mismatch between the model's complexity and the dataset's characteristics.
+4. **GPU Limitations**: 
+   The training process required substantial computational power, and although the model was run on a GPU, the hardware limitations may have hindered the model’s ability to converge to more realistic outputs. Further tuning or a more powerful GPU might be necessary for better results.
 
 ### Conclusion
 
