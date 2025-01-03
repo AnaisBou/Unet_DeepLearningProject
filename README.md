@@ -50,7 +50,7 @@ The CelebA dataset consists of 20,599 celebrity images, each annotated with 40 a
 
 **Example images from CelebA:**
 
-![CelebA Example 1](images/celeba_example_1.png)
+![CelebA Example 1](images/CelebA1.png)
 ![CelebA Example 2](images/celeba_example_2.png)
 
 For this project, the images were resized to 256x256 pixels for training.
