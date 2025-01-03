@@ -1,4 +1,4 @@
-# Report: Understanding and Implementing Diffusion Models for Image Generation using U-Net
+# Understanding and Implementing Diffusion Models for Image Generation using U-Net
 
 ## 1. Introduction
 This report outlines the implementation of a **diffusion model** for image generation, leveraging the **U-Net** architecture, specifically applied to the **CelebA** dataset. Diffusion models have gained attention in recent years for their ability to generate high-quality images through a forward and reverse noise process. In this project, I attempted to generate realistic faces by training a U-Net model to reverse the diffusion process. Unfortunately, the generated images did not meet the desired quality standards, and further improvements are necessary.
