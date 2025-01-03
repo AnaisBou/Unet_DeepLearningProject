@@ -20,9 +20,10 @@ Diffusion models represent a class of generative models inspired by **stochastic
 #### 2.2.1. The Forward Process
 The forward process is essentially a sequence of noise addition steps that progressively transforms a clean image into pure noise. Mathematically, it can be described as a diffusion process governed by a set of transition probabilities. The forward process is defined as gradually applying noise to the data:
 
-\[
+$$
 q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} x_{t-1}, \beta_t I)
-\]
+$$
+
 Where \( x_t \) represents the noisy image at step \( t \), and \( \beta_t \) controls the noise schedule.
 
 #### 2.2.2. The Reverse Process
